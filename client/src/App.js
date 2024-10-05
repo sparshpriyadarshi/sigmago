@@ -3,7 +3,6 @@ import { useState } from "react";
 import GoBoardT from './goboardtype.js';
 import { INIT_BOARDDIM, INIT_SIZE, INIT_TURN } from './constants.js'; /* -------------------- */
 
-//TODO double click
 function Cell({ boarddim, boardsize, r, c, chval, onCellClick, onCellDoubleClick }) {
 
 	let celldim = boarddim / boardsize;
