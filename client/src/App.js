@@ -120,46 +120,48 @@ function GoBoard({ dims, sz, boardstring, turn, makeCellUpdate, makeBoardReset, 
 }
 
 function Controls({ onResetClick, onRandomizeClick, onSizeClick, sz, turn, onTurnClick }) {
-	return <>
-		<fieldset>
-			<legend>To move:</legend>
-			<div>
-				<input type="radio" id="black" name="tomove" value="black" checked={turn === 'B'} onClick={() => onTurnClick('B')} />
-				<label for="black">Black</label>
-			</div>
-			<div>
-				<input type="radio" id="white" name="tomove" value="white" checked={turn === 'W'} onClick={() => onTurnClick('W')} />
-				<label for="white">White</label>
-			</div>
-		</fieldset>
+	return <div id="controls-wrapper">
+			<div id="bullet-controls" class="vert-sep hori-sep">
+				<fieldset>
+					<legend>To move:</legend>
+					<div>
+						<input type="radio" id="black" name="tomove" value="black" checked={turn === 'B'} onClick={() => onTurnClick('B')} />
+						<label for="black">Black</label>
+					</div>
+					<div>
+						<input type="radio" id="white" name="tomove" value="white" checked={turn === 'W'} onClick={() => onTurnClick('W')} />
+						<label for="white">White</label>
+					</div>
+				</fieldset>
 
-		<fieldset>
-			<legend>Board size:</legend>
-			<div>
-				<input type="radio" id="9" name="boardsize" checked={sz === 9} onClick={() => onSizeClick(9)} />
-				<label for="9">9 x 9</label>
+				<fieldset>
+					<legend>Board size:</legend>
+					<div>
+						<input type="radio" id="9" name="boardsize" checked={sz === 9} onClick={() => onSizeClick(9)} />
+						<label for="9">9 x 9</label>
+					</div>
+					<div>
+						<input type="radio" id="13" name="boardsize" checked={sz === 13} onClick={() => onSizeClick(13)} />
+						<label for="13">13 x 13</label>
+					</div>
+					<div>
+						<input type="radio" id="19" name="boardsize" checked={sz === 19} onClick={() => onSizeClick(19)} />
+						<label for="19">19 x 19</label>
+					</div>
+				</fieldset>
 			</div>
-			<div>
-				<input type="radio" id="13" name="boardsize" checked={sz === 13} onClick={() => onSizeClick(13)} />
-				<label for="13">13 x 13</label>
-			</div>
-			<div>
-				<input type="radio" id="19" name="boardsize" checked={sz === 19} onClick={() => onSizeClick(19)} />
-				<label for="19">19 x 19</label>
-			</div>
-		</fieldset>
-		<p>
-			<input type="button"
-				onClick={onResetClick}
-				value="CLEAR / RESET / NEW" />
-		</p>
-		<p>
-			{/* <input type="button"
-				onClick={onRandomizeClick}
-				value="RANDOMIZE STONES" /> */}
-		</p>
+			<div id="button-controls" class="vert-sep hori-sep">
 
-	</>
+				<input type="button"
+					onClick={onResetClick}
+					value="CLEAR / RESET / NEW" />
+
+
+				{/* <input type="button"
+					onClick={onRandomizeClick}
+					value="RANDOMIZE STONES" /> */}
+			</div>
+	</div>
 }
 
 function Info({ dump }) {
@@ -230,22 +232,29 @@ export default function Board() {
 
 	try {
 
-		return <>
-			<h1>
-				<a href="https://en.wikipedia.org/wiki/Go_(game)"> Go | Wéiqí | Baduk </a>
-			</h1>
-			<GoBoard dims={INIT_BOARDDIM}
-				sz={boardObjState.size}
-				boardstring={boardObjState.getBoardGrid()}
-				turn={turnState}
-				makeCellUpdate={(r, c, color) => handleCellUpdate(r, c, color)}
-				makeBoardReset={handleBoardReset}
-				makeBoardRandomize={handleBoardRandomize}
-				makeBoardResize={(szval) => handleBoardResize(szval)}
-				makeTurnChange={(turnval) => handleTurnClick(turnval)}
-			/>
-			{/* <Info dump={boardObjState.getBoardGrid()} /> */}
-		</>
+		return <div>
+			<header>
+				<h1>
+					<a class="nostyle" href="https://en.wikipedia.org/wiki/Go_(game)"> Go | Wéiqí | Baduk </a>
+				</h1>
+			</header>
+			<section id="board-app-wrapper">
+
+				<GoBoard dims={INIT_BOARDDIM}
+					sz={boardObjState.size}
+					boardstring={boardObjState.getBoardGrid()}
+					turn={turnState}
+					makeCellUpdate={(r, c, color) => handleCellUpdate(r, c, color)}
+					makeBoardReset={handleBoardReset}
+					makeBoardRandomize={handleBoardRandomize}
+					makeBoardResize={(szval) => handleBoardResize(szval)}
+					makeTurnChange={(turnval) => handleTurnClick(turnval)}
+				/>
+				{/* <Info dump={boardObjState.getBoardGrid()} /> */}
+
+			</section>
+
+		</div>
 	} catch (error) {
 		console.error(error);
 		return <GlobalErrorMessage message={error.message} />

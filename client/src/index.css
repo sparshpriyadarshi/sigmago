@@ -1,0 +1,51 @@
+
+/*taken from: https://github.com/sindresorhus/modern-normalize */
+html {
+	font-family:
+		system-ui,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+
+    background-color: antiquewhite;
+}
+/* 
+header{
+    background-color: slategray; 
+} 
+*/
+
+/* credit: https://stackoverflow.com/questions/6868009/html-anchor-disable-style */
+a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;/* hover on links is better like this */
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+#board-app-wrapper{
+    display: flex;
+    flex-direction: row;/*default is row*/
+    flex-wrap: wrap;
+}
+#controls-wrapper{
+    display: block;
+}
+
+.vert-sep{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.hori-sep{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
