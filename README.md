@@ -4,6 +4,8 @@ A very bland no-fuss [Go](https://en.wikipedia.org/wiki/Go_(game)) board without
 
 Made using React.
 
+![image](go-board-screenshot-1.png)
+
 ## Setup:
 ```
 git clone https://github.com/sparshpriyadarshi/sigmago.git
